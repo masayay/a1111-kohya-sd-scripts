@@ -1,0 +1,88 @@
+no_metadata = false
+network_alpha = 1.0
+network_train_unet_only = true
+network_train_text_encoder_only = false
+dim_from_weights = false
+no_half_vae = true
+
+[sd_models_arguments]
+v2 = false
+v_parameterization = false
+
+[dataset_arguments]
+cache_info = false
+shuffle_caption = false
+caption_separator = ","
+caption_extension = ".txt"
+keep_tokens = 0
+enable_wildcard = false
+color_aug = false
+flip_aug = false
+random_crop = false
+debug_dataset = false
+cache_latents = false
+vae_batch_size = 4
+cache_latents_to_disk = true
+enable_bucket = false
+min_bucket_reso = 256
+max_bucket_reso = 1024
+bucket_reso_steps = 64
+bucket_no_upscale = false
+token_warmup_min = 1
+token_warmup_step = 0.0
+caption_dropout_rate = 0.0
+caption_dropout_every_n_epochs = 0
+caption_tag_dropout_rate = 0.0
+dataset_repeats = 1
+
+[training_arguments]
+save_state_to_huggingface = false
+resume_from_huggingface = false
+async_upload = false
+save_state = false
+save_state_on_train_end = false
+train_batch_size = 1
+mem_eff_attn = false
+torch_compile = false
+dynamo_backend = "inductor"
+xformers = false
+sdpa = false
+max_train_steps = 1600
+persistent_data_loader_workers = false
+seed = 42
+gradient_checkpointing = false
+gradient_accumulation_steps = 1
+mixed_precision = "no"
+full_fp16 = false
+full_bf16 = false
+fp8_base = false
+ddp_gradient_as_bucket_view = false
+ddp_static_graph = false
+log_with = "tensorboard"
+noise_offset_random_strength = false
+ip_noise_gamma_random_strength = false
+multires_noise_discount = 0.3
+zero_terminal_snr = false
+loss_type = "l2"
+huber_schedule = "snr"
+huber_c = 0.1
+lowram = false
+highvram = false
+sample_at_first = false
+sample_sampler = "ddim"
+output_config = false
+prior_loss_weight = 1.0
+
+[optimizer_arguments]
+use_8bit_adam = false
+use_lion_optimizer = false
+learning_rate = 2e-6
+max_grad_norm = 1.0
+lr_scheduler = "constant"
+lr_warmup_steps = 0
+lr_scheduler_num_cycles = 1
+lr_scheduler_power = 1.0
+
+[config_arguments]
+
+[sd_saving_arguments]
