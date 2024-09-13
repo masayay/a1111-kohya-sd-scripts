@@ -6,7 +6,7 @@ from scripts.utilities import load_args_template, options_to_gradio
 
 
 def title():
-    return "Check lora wights"
+    return "Check lora weights"
 
 
 def create_ui():
