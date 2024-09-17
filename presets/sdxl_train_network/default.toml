@@ -1,7 +1,7 @@
 unet_lr = 0.0001
 network_module = "networks.lora"
 network_dim = 32
-network_alpha = 1.0
+network_alpha = 2.0
 network_train_unet_only = true
 no_half_vae = true
 
@@ -13,9 +13,6 @@ pretrained_model_name_or_path = "/data/models/Stable-diffusion/animagine-xl-3.1.
 [dataset_arguments]
 cache_info = false
 shuffle_caption = false
-caption_separator = ","
-caption_extension = ".txt"
-keep_tokens = 0
 enable_wildcard = false
 color_aug = false
 flip_aug = false
@@ -25,17 +22,8 @@ resolution = "1024"
 cache_latents = true
 vae_batch_size = 4
 cache_latents_to_disk = true
-enable_bucket = true
-min_bucket_reso = 256
-max_bucket_reso = 2048
-bucket_reso_steps = 64
-bucket_no_upscale = true
-token_warmup_min = 1
-token_warmup_step = 0.0
-caption_dropout_rate = 0.0
-caption_dropout_every_n_epochs = 0
-caption_tag_dropout_rate = 0.0
-dataset_repeats = 1
+enable_bucket = false
+bucket_no_upscale = false
 
 [training_arguments]
 output_dir = "/data/models/Lora"
@@ -58,10 +46,9 @@ max_train_steps = 2000
 max_train_epochs = 5
 persistent_data_loader_workers = false
 seed = 42
-gradient_checkpointing = true
-gradient_accumulation_steps = 1
+gradient_checkpointing = false
 mixed_precision = "fp16"
-full_fp16 = true
+full_fp16 = false
 full_bf16 = false
 fp8_base = false
 ddp_gradient_as_bucket_view = false
@@ -74,7 +61,6 @@ ip_noise_gamma_random_strength = false
 zero_terminal_snr = false
 loss_type = "l2"
 huber_schedule = "snr"
-huber_c = 0.1
 lowram = false
 highvram = false
 sample_at_first = false
@@ -82,14 +68,13 @@ sample_sampler = "euler_a"
 output_config = false
 
 [optimizer_arguments]
-optimizer_type = "AdaFactor"
+optimizer_type = "AdamW8bit"
 use_8bit_adam = false
 use_lion_optimizer = false
 learning_rate = 4e-7
 max_grad_norm = 0.0
-optimizer_args = [ "scale_parameter=False", "relative_step=False", "warmup_init=False",]
-lr_scheduler = "constant_with_warmup"
-lr_warmup_steps = 100
+lr_scheduler = "cosine_with_restarts"
+lr_warmup_steps = 0
 lr_scheduler_num_cycles = 400
 
 [config_arguments]

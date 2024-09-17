@@ -20,7 +20,7 @@
 
 ![sdxl_train_network1.jpg](./images/sdxl_train_network1.jpg)
 
-2. 設定リストから「default」を選択し「Lorad preset」
+2. 設定リストから「default」を選択し「Load preset」
 
 3. 各種設定の見直し
 
@@ -28,6 +28,8 @@
 - dataset_config: データセットのコンフィグファイル
 - output_dir: Loraファイルの出力先
 - logging_dir: ログ出力先
+
+オプションについては[wiki](./wiki/training)参照
 
 4. 「実行」し「ターミナル」で確認
 
