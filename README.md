@@ -24,12 +24,26 @@
 
 3. 各種設定の見直し
 
-- pretrained_model_name_or_path: 学習済モデルのパス
-- dataset_config: データセットのコンフィグファイル
-- output_dir: Loraファイルの出力先
-- logging_dir: ログ出力先
+- ディレクトリ
+  - pretrained_model_name_or_path
+  - output_dir
+  - logging_dir
+  
+- データセット
+  - dataset_config
 
-オプションについては[wiki](./wiki/training)参照
+`dataset.toml`の例
+
+```txt
+[general]
+[[datasets]]
+[[datasets.subsets]]
+image_dir = '/data/training/my_data'
+caption_extension = '.txt'
+num_repeats = 10
+```
+
+詳細は[wiki](https://github.com/masayay/a1111-kohya-sd-scripts/wiki/training)参照
 
 4. 「実行」し「ターミナル」で確認
 
