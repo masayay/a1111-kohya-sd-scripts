@@ -22,15 +22,13 @@
 
 2. 設定リストから「default」を選択し「Load preset」
 
-3. 各種設定の見直し
+3. オプションの見直し
 
-- ディレクトリ
-  - pretrained_model_name_or_path
-  - output_dir
-  - logging_dir
-  
-- データセット
-  - dataset_config
+- pretrained_model_name_or_path
+- output_dir
+- logging_dir  
+- dataset_config
+- [wiki](https://github.com/masayay/a1111-kohya-sd-scripts/wiki/training)参照
 
 `dataset.toml`の例
 
@@ -42,8 +40,6 @@ image_dir = '/data/training/my_data'
 caption_extension = '.txt'
 num_repeats = 10
 ```
-
-詳細は[wiki](https://github.com/masayay/a1111-kohya-sd-scripts/wiki/training)参照
 
 4. 「実行」し「ターミナル」で確認
 
