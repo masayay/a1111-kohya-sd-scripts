@@ -1,6 +1,6 @@
-# rewrite requirements for kohya_ss
+# Requirements for kohya_ss/sd-scripts
 accelerate
-transformers==4.36.2
+transformers>=4.31.0
 diffusers[torch]
 ftfy
 opencv-python
