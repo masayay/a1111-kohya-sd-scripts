@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const checkProcessIsAlive = () => {
                 setInterval(async () => {
-                    const res = await fetch('./internal/extensions/a1111-sd-scripts/process/alive')
+                    const res = await fetch('./internal/extensions/a1111-kohya-sd-scripts/process/alive')
                     const obj = await res.json()
                     for (const tab of all_tabs)
                         kohya_sd_webui__toggle_runner_button(tab, !obj.alive)
