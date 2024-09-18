@@ -1,6 +1,7 @@
 # Requirements for kohya_ss/sd-scripts
 accelerate
-transformers>=4.31.0
+# transformers version is depends on Stable Diffusion WebUI, need to be ajusted
+transformers==4.32.1
 diffusers[torch]
 ftfy
 opencv-python
