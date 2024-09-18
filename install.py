@@ -13,7 +13,7 @@ repo_dir = os.path.join(dirname, "kohya_ss")
 def prepare_environment():
     sd_scripts_repo = os.environ.get("SD_SCRIPTS_REPO", "https://github.com/kohya-ss/sd-scripts.git")
     requirements_file = os.environ.get("REQS_FILE", "requirements.txt")
-    disable_strict_version = True
+    disable_strict_version = False
 
     if not os.path.exists(repo_dir):
         launch.run(
