@@ -12,7 +12,6 @@ repo_dir = os.path.join(dirname, "kohya_ss")
 
 def prepare_environment():
     sd_scripts_repo = os.environ.get("SD_SCRIPTS_REPO", "https://github.com/kohya-ss/sd-scripts.git")
-    sd_scripts_branch = os.environ.get("SD_SCRIPTS_BRANCH", "main")
     requirements_file = os.environ.get("REQS_FILE", "requirements.txt")
     disable_strict_version = True
 
@@ -31,15 +30,11 @@ def prepare_environment():
             requirements = [
                 re.split("==|<|>", a)[0]
                 for a in txt.split("\n")
-                if (not a.startswith("#") and a != "-e .")
+                if not a.startswith("#")
             ]
             requirements = " ".join(requirements)
-            #launch.run_pip(
-            #    f'install "{requirements}" "{repo_dir}"',
-            #    "requirements for kohya sd-scripts",
-            #)
             launch.run(
-                f'"{launch.python}" -m pip install "{requirements}"',
+                f'cd "{repo_dir}" && "{launch.python}" -m pip install {requirements}',
                 desc=f"Installing requirements for kohya sd-scripts",
                 errdesc=f"Couldn't install requirements for kohya sd-scripts",
             )

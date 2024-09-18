@@ -33,14 +33,6 @@ stderr: {result.stderr.decode(encoding="utf8", errors="ignore") if len(result.st
 
     return result.stdout.decode(encoding="utf8", errors="ignore")
 
-
-def check_run(command):
-    result = subprocess.run(
-        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
-    )
-    return result.returncode == 0
-
-
 def is_installed(package):
     try:
         spec = importlib.util.find_spec(package)
@@ -48,19 +40,6 @@ def is_installed(package):
         return False
 
     return spec is not None
-
-
-def run_pip(args, desc=None):
-    if skip_install:
-        return
-
-    index_url_line = f" --index-url {index_url}" if index_url != "" else ""
-    return run(
-        f'"{python}" -m pip {args} --prefer-binary{index_url_line}',
-        desc=f"Installing {desc}",
-        errdesc=f"Couldn't install {desc}",
-    )
-
 
 def run_python(code, desc=None, errdesc=None):
     return run(f'"{python}" -c "{code}"', desc, errdesc)
