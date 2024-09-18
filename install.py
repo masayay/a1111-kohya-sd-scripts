@@ -12,8 +12,8 @@ repo_dir = os.path.join(dirname, "kohya_ss")
 
 def prepare_environment():
     sd_scripts_repo = os.environ.get("SD_SCRIPTS_REPO", "https://github.com/kohya-ss/sd-scripts.git")
-    requirements_file = os.environ.get("REQS_FILE", "requirements.txt")
-    disable_strict_version = False
+    requirements_file = os.path.join(dirname, "requirements.txt")
+    disable_strict_version = True
 
     if not os.path.exists(repo_dir):
         launch.run(
@@ -25,19 +25,11 @@ def prepare_environment():
             launch.run_pip("install triton", "triton")
 
     if disable_strict_version:
-        with open(os.path.join(repo_dir, requirements_file), "r") as f:
-            txt = f.read()
-            requirements = [
-                re.split("==|<|>", a)[0]
-                for a in txt.split("\n")
-                if not a.startswith("#")
-            ]
-            requirements = " ".join(requirements)
-            launch.run(
-                f'cd "{repo_dir}" && "{launch.python}" -m pip install {requirements}',
-                desc=f"Installing requirements for kohya sd-scripts",
-                errdesc=f"Couldn't install requirements for kohya sd-scripts",
-            )
+        launch.run(
+            f'cd "{repo_dir}" && "{launch.python}" -m pip install {requirements_file}',
+            desc=f"Installing requirements for kohya sd-scripts",
+            errdesc=f"Couldn't install requirements for kohya sd-scripts",
+        )
     else:
         launch.run(
             f'cd "{repo_dir}" && "{launch.python}" -m pip install -r requirements.txt',

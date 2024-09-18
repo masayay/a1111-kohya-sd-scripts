@@ -1,0 +1,27 @@
+# rewrite requirements for kohya_ss
+accelerate
+transformers==4.36.2
+diffusers[torch]
+ftfy
+opencv-python
+einops==0.7.0
+pytorch-lightning
+bitsandbytes
+prodigyopt
+lion-pytorch
+tensorboard
+safetensors
+altair
+easygui
+toml
+voluptuous
+huggingface-hub
+
+# for Image utils
+imagesize
+
+# For logging
+rich
+
+# for kohya_ss library
+-e .
