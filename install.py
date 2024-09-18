@@ -26,7 +26,7 @@ def prepare_environment():
 
     if disable_strict_version:
         launch.run(
-            f'cd "{repo_dir}" && "{launch.python}" -m pip install {requirements_file}',
+            f'cd "{repo_dir}" && "{launch.python}" -m pip install -r {requirements_file}',
             desc=f"Installing requirements for kohya sd-scripts",
             errdesc=f"Couldn't install requirements for kohya sd-scripts",
         )
