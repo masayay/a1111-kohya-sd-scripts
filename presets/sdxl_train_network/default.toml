@@ -68,7 +68,7 @@ sample_sampler = "euler_a"
 output_config = false
 
 [optimizer_arguments]
-optimizer_type = "AdamW8bit"
+optimizer_type = "AdamW"
 use_8bit_adam = false
 use_lion_optimizer = false
 learning_rate = 4e-7
