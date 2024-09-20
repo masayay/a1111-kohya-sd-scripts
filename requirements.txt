@@ -26,3 +26,9 @@ rich
 
 # for kohya_ss library
 -e .
+
+# for WD14 captioning (onnx)
+onnx
+onnxruntime-gpu
+# for aoid conflict with open-clip-torch
+protobuf<4
