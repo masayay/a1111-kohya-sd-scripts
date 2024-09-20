@@ -1,6 +1,6 @@
 repo_id = "SmilingWolf/wd-v1-4-convnext-tagger-v2"
 model_dir = "/data/training/wd14_tagger_model"
-force_download = true
+force_download = false
 batch_size = 4
 thresh = 0.35
 recursive = false
